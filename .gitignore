@@ -107,3 +107,6 @@ venv.bak/
 /images/notMNIST_small/
 /images/notMNIST_large/
 *.gz
+
+# Editor
+.vscode/
