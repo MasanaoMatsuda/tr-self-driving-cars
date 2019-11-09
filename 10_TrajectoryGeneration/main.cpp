@@ -31,22 +31,21 @@ const vector<int> goal = { (int)grid.size() - 1, (int)grid[0].size() - 1 };
 
 int main()
 {
-	cout << "Finding path through grid:" << endl;
+	cout << "Finding path through grid: " << endl;
 
 	for (int i = 0; i < grid.size(); ++i)
 	{
-		cout << grid[i][0];
-		for (int j = 0; i < grid[0].size(); ++j)
-			cout << "," << grid[i][j];
+		for (int j = 0; j < grid[0].size(); ++j)
+			cout << grid[i][j] << ",";
 		cout << endl;
 	}
 
 	HBF hbf = HBF();
-	HBF::maze_path get_path = hbf.search(grid, start, goal);
-	vector<HBF::maze_state> show_path = hbf.reconstruct_path(get_path.came_from, start, get_path.final);
+	HBF::maze_path path = hbf.search(grid, start, goal);
 	
-	cout << "show path from start to finish" << endl;
-	for (int i = show_path.size() - 1; i >= 0; --i)
+	cout << "Show path from start to finish" << endl;
+	vector<HBF::maze_state> show_path = hbf.reconstruct_path(path.came_from, start, path.final);
+	for (int i = show_path.size()-1; i >= 0; --i)
 	{
 		HBF::maze_state step = show_path[i];
 		cout << "##### step " << step.g << " #####" << endl;
@@ -54,6 +53,6 @@ int main()
 		cout << "y " << step.y << endl;
 		cout << "theta " << step.theta << endl;
 	}
-
+	
 	return 0;
 }
