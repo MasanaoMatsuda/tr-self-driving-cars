@@ -1,13 +1,14 @@
 #ifndef CLASSIFIER_H_
 #define CLASSIFIER_H_
 
+#include "./../Eigen/Dense"
 #include <string>
 #include <vector>
-#include "Eigen/Dense"
 
-using Eigen::ArrayXd;
+
 using std::string;
-using std:vector;
+using std::vector;
+using Eigen::ArrayXd;
 
 class GNB 
 {

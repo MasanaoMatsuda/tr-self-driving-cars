@@ -53,6 +53,22 @@ int main()
 		cout << "y " << step.y << endl;
 		cout << "theta " << step.theta << endl;
 	}
-	
+
+
+	// Jerk Minimization
+	vector<test_case> tc = create_tests();
+	bool total_correct = true;
+	for (int i = 0; i < tc.size(); ++i)
+	{
+		vector<double> jmt = JerkMinimizingTrajectory(tc[i].start, tc[i].end, tc[i].T);
+		bool correct = close_enough(jmt, answers[i]);
+		total_correct &= correct;
+	}
+
+	if (!total_correct)
+		std::cout << "Try again!" << std::endl;
+	else
+		std::cout << "Nice work!" << std::endl;
+
 	return 0;
 }
